@@ -29,3 +29,23 @@ def predict():
         parking = int(request.form['parking'])
         prefarea = request.form['prefarea']
         furnishingstatus = request.form['furnishingstatus']
+ # Prepare input data
+        input_features = [area, bedrooms, bathrooms, stories, mainroad, guestroom, basement, hotwaterheating, airconditioning, parking, prefarea, furnishingstatus]
+        
+        # Preprocess categorical and numerical features
+        categorical_values = input_features[4:]
+        encoded_categorical_values = encoder.transform([categorical_values])
+        
+        numerical_values = np.array(input_features[:4] + [parking]).reshape(1, -1)
+        scaled_numerical_values = scaler.transform(numerical_values)
+        
+        # Combine both preprocessed categorical and numerical values
+        preprocessed_input = np.hstack((scaled_numerical_values, encoded_categorical_values))
+        
+        # Predict the price
+        predicted_price = model.predict(preprocessed_input)
+        
+        return render_template('index.html', result=predicted_price[0])
+
+if __name__ == '__main__':
+    app.run(debug=True)
