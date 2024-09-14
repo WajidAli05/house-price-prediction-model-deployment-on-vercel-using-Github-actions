@@ -1,51 +1,81 @@
-<label for="guestroom">Guestroom:</label>
-<select id="guestroom" name="guestroom" required>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-</select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>House Price Prediction</h1>
+        <form action="/predict" method="POST">
+            <label for="area">Area (sq. ft.):</label>
+            <input type="number" id="area" name="area" required>
+            
+            <label for="bedrooms">Number of Bedrooms:</label>
+            <input type="number" id="bedrooms" name="bedrooms" required>
 
-<label for="basement">Basement:</label>
-<select id="basement" name="basement" required>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-</select>
+            <label for="bathrooms">Number of Bathrooms:</label>
+            <input type="number" id="bathrooms" name="bathrooms" required>
 
-<label for="hotwaterheating">Hot Water Heating:</label>
-<select id="hotwaterheating" name="hotwaterheating" required>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-</select>
+            <label for="stories">Number of Stories:</label>
+            <input type="number" id="stories" name="stories" required>
 
-<label for="airconditioning">Air Conditioning:</label>
-<select id="airconditioning" name="airconditioning" required>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-</select>
+            <label for="mainroad">Main Road Access:</label>
+            <select id="mainroad" name="mainroad" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
 
-<label for="parking">Number of Parking Spaces:</label>
-<input type="number" id="parking" name="parking" required>
+            <label for="guestroom">Guestroom:</label>
+            <select id="guestroom" name="guestroom" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
 
-<label for="prefarea">Preferred Area:</label>
-<select id="prefarea" name="prefarea" required>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-</select>
+            <label for="basement">Basement:</label>
+            <select id="basement" name="basement" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
 
-<label for="furnishingstatus">Furnishing Status:</label>
-<select id="furnishingstatus" name="furnishingstatus" required>
-    <option value="furnished">Furnished</option>
-    <option value="semi-furnished">Semi-furnished</option>
-    <option value="unfurnished">Unfurnished</option>
-</select>
+            <label for="hotwaterheating">Hot Water Heating:</label>
+            <select id="hotwaterheating" name="hotwaterheating" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
 
-<button type="submit">Predict Price</button>
-</form>
+            <label for="airconditioning">Air Conditioning:</label>
+            <select id="airconditioning" name="airconditioning" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
 
-<div class="result">
-{% if result %}
-    <h2>Predicted House Price: {{ result }} </h2>
-{% endif %}
-</div>
-</div>
+            <label for="parking">Number of Parking Spaces:</label>
+            <input type="number" id="parking" name="parking" required>
+
+            <label for="prefarea">Preferred Area:</label>
+            <select id="prefarea" name="prefarea" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="furnishingstatus">Furnishing Status:</label>
+            <select id="furnishingstatus" name="furnishingstatus" required>
+                <option value="furnished">Furnished</option>
+                <option value="semi-furnished">Semi-furnished</option>
+                <option value="unfurnished">Unfurnished</option>
+            </select>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        <div class="result">
+            {% if result %}
+                <h2>Predicted House Price: {{ result }} </h2>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>
