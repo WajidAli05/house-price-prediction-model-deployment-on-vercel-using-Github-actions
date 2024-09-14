@@ -1,0 +1,17 @@
+# Python files to ignore
+venv/
+.env/
+*.pkl
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# IDE/editor-specific files
+.vscode/
+.idea/
