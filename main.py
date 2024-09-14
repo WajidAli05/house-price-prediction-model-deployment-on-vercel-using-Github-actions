@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 import numpy as np
 import joblib
-
+ 
 # Load the dataset
 file_path = 'Housing.csv'  # Replace with your actual dataset path
 housing_data = pd.read_csv(file_path)
@@ -55,3 +55,4 @@ print("Model saved as house_price_model.pkl")
 joblib.dump(scaler, 'scaler.pkl')
 joblib.dump(onehot_encoder, 'encoder.pkl')
 print("Scaler and Encoder saved for future use.")
+
