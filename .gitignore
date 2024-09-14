@@ -12,7 +12,3 @@ __pycache__/
 *.log
 *.tmp
 *.temp
-
-# IDE/editor-specific files
-.vscode/
-.idea/
