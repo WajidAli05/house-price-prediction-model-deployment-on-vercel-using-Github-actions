@@ -82,7 +82,8 @@ jobs:
         run: npm install -g vercel
 
       - name: Deploy to Vercel (Development)
-        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --scope ${{ secrets.VERCEL_SCOPE }} --env NODE_ENV=development
+        run: |
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} --env NODE_ENV=development
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
@@ -100,7 +101,8 @@ jobs:
         run: npm install -g vercel
 
       - name: Deploy to Vercel (Staging)
-        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --scope ${{ secrets.VERCEL_SCOPE }} --env NODE_ENV=staging
+        run: |
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} --env NODE_ENV=staging
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
@@ -118,7 +120,8 @@ jobs:
         run: npm install -g vercel
 
       - name: Deploy to Vercel (Production)
-        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --scope ${{ secrets.VERCEL_SCOPE }} --env NODE_ENV=production
+        run: |
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} --prod --env NODE_ENV=production
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
