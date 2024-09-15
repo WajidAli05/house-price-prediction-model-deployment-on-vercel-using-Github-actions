@@ -2,7 +2,6 @@
 venv/
 .env/
 *.csv
-*.pkl
 __pycache__/
 *.pyc
 *.pyo
@@ -12,4 +11,3 @@ __pycache__/
 *.log
 *.tmp
 *.temp
-
