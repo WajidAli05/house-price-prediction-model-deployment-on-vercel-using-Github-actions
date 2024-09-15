@@ -1,6 +1,6 @@
 name: CI/CD Pipeline for House Price Prediction
 
-# Trigger workflow on push to dev, staging, or main branches, or on pull requests
+# Trigger workflow on push to dev, staging, main branches, or on pull requests
 on:
   push:
     branches:
@@ -82,6 +82,9 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
 
+      - name: Log Current Branch
+        run: echo "Current branch: ${{ github.ref }}"
+
       - name: Deploy to Vercel (Development)
         run: |
           vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} --env NODE_ENV=development
@@ -100,6 +103,9 @@ jobs:
 
       - name: Install Vercel CLI
         run: npm install -g vercel
+
+      - name: Log Current Branch
+        run: echo "Current branch: ${{ github.ref }}"
 
       - name: Deploy to Vercel (Staging)
         run: |
@@ -120,6 +126,9 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
 
+      - name: Log Current Branch
+        run: echo "Current branch: ${{ github.ref }}"
+
       - name: Deploy to Vercel (Production)
         run: |
           vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} --prod --env NODE_ENV=production
@@ -127,3 +136,25 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         if: github.ref == 'refs/heads/main'
+
+  # Job 7: Deploy to Vercel (Issue-8 Deployment Branch)
+  deploy-issue-8:
+    runs-on: ubuntu-latest
+    needs: deploy-prod
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Log Current Branch
+        run: echo "Current branch: ${{ github.ref }}"
+
+      - name: Deploy to Vercel (Issue-8 Deployment)
+        run: |
+          vercel --token ${{ secrets.VERCEL_TOKEN }}" --scope "${{ secrets.VERCEL_SCOPE }}" --env NODE_ENV=production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
+        if: github.ref == 'refs/heads/issue-8-deployment'
