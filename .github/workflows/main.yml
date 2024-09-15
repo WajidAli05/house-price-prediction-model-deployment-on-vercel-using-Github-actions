@@ -32,7 +32,7 @@ jobs:
           pip install flake8
 
       - name: Run Linting
-        run: flake8 .
+        run: flake8 --max-line-length=120 .
 
   # Job 2: Run Unit Tests
   unit-tests:
