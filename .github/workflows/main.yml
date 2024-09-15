@@ -1,6 +1,6 @@
 name: CI/CD Pipeline for House Price Prediction
 
-# Trigger workflow on push to dev, staging, main branches, or on pull requests
+# Trigger workflow on push to dev, staging, or main branches, or on pull requests
 on:
   push:
     branches:
@@ -83,7 +83,7 @@ jobs:
         run: npm install -g vercel
 
       - name: Log Current Branch
-        run: echo "Current branch: ${{ github.ref }}"
+        run: echo "Current branch is ${{ github.ref }}"
 
       - name: Deploy to Vercel (Development)
         run: |
@@ -105,7 +105,7 @@ jobs:
         run: npm install -g vercel
 
       - name: Log Current Branch
-        run: echo "Current branch: ${{ github.ref }}"
+        run: echo "Current branch is ${{ github.ref }}"
 
       - name: Deploy to Vercel (Staging)
         run: |
@@ -127,7 +127,7 @@ jobs:
         run: npm install -g vercel
 
       - name: Log Current Branch
-        run: echo "Current branch: ${{ github.ref }}"
+        run: echo "Current branch is ${{ github.ref }}"
 
       - name: Deploy to Vercel (Production)
         run: |
@@ -149,11 +149,11 @@ jobs:
         run: npm install -g vercel
 
       - name: Log Current Branch
-        run: echo "Current branch: ${{ github.ref }}"
+        run: echo "Current branch is ${{ github.ref }}"
 
       - name: Deploy to Vercel (Issue-8 Deployment)
         run: |
-          vercel --token ${{ secrets.VERCEL_TOKEN }}" --scope "${{ secrets.VERCEL_SCOPE }}" --env NODE_ENV=production
+          vercel --token "${{ secrets.VERCEL_TOKEN }}" --scope "${{ secrets.VERCEL_SCOPE }}" --env NODE_ENV=production
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
