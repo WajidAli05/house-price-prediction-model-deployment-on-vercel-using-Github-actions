@@ -74,3 +74,5 @@ print("Model saved as house_price_model.pkl")
 joblib.dump(scaler, "scaler.pkl")
 joblib.dump(onehot_encoder, "encoder.pkl")
 print("Scaler and Encoder saved for future use.")
+
+# Sample input for prediction (same structure as the original data)
