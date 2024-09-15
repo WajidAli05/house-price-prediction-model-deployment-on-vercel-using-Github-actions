@@ -7,6 +7,7 @@ on:
       - main
       - dev
       - staging
+      - issue-8-deployment
   pull_request:
     branches:
       - main
