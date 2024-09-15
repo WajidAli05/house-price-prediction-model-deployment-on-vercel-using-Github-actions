@@ -10,9 +10,11 @@ model = joblib.load('house_price_model.pkl')
 scaler = joblib.load('scaler.pkl')
 encoder = joblib.load('encoder.pkl')
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -53,8 +55,11 @@ def predict():
             # Render the template and pass the predicted price to it
             return render_template('index.html', result=f"${predicted_price[0]:,.2f}")
 
-        except Exception as e:
+        except Exception:
+            # Handle the exception by showing an error message
             return render_template('index.html', result="Error occurred during prediction.")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
+
