@@ -18,18 +18,7 @@ class TestHousePriceModel(unittest.TestCase):
         """Test the preprocessing (OneHotEncoding and Scaling) of the dataset."""
         # Sample input for preprocessing
         sample_input = [
-            5000,
-            4,
-            3,
-            2,
-            "yes",
-            "no",
-            "no",
-            "no",
-            "yes",
-            2,
-            "yes",
-            "furnished",
+            5000, 4, 3, 2, "yes", "no", "no", "no", "yes", 2, "yes", "furnished"
         ]
 
         # Load the saved scaler and encoder
@@ -38,32 +27,20 @@ class TestHousePriceModel(unittest.TestCase):
 
         # Ensure the correct number of features are preprocessed
         categorical_columns = [
-            "mainroad",
-            "guestroom",
-            "basement",
-            "hotwaterheating",
-            "airconditioning",
-            "prefarea",
-            "furnishingstatus",
+            "mainroad", "guestroom", "basement", "hotwaterheating",
+            "airconditioning", "prefarea", "furnishingstatus"
         ]
         numerical_columns = ["area", "bedrooms", "bathrooms", "stories", "parking"]
 
         # Split the categorical and numerical values from sample_input
         categorical_values = [
-            sample_input[4],
-            sample_input[5],
-            sample_input[6],
-            sample_input[7],
-            sample_input[8],
-            sample_input[10],
-            sample_input[11],
+            sample_input[4], sample_input[5], sample_input[6],
+            sample_input[7], sample_input[8], sample_input[10],
+            sample_input[11]
         ]
         numerical_values = [
-            sample_input[0],
-            sample_input[1],
-            sample_input[2],
-            sample_input[3],
-            sample_input[9],
+            sample_input[0], sample_input[1], sample_input[2],
+            sample_input[3], sample_input[9]
         ]
 
         # Use DataFrame with column names for encoding and scaling
@@ -78,12 +55,12 @@ class TestHousePriceModel(unittest.TestCase):
         self.assertEqual(
             encoded_categorical_values.shape[1],
             len(encoder.get_feature_names_out(categorical_columns)),
-            "Unexpected number of categorical encoded features",
+            "Unexpected number of categorical encoded features"
         )
         self.assertEqual(
             scaled_numerical_values.shape[1],
             len(numerical_columns),
-            "Unexpected number of numerical features after scaling",
+            "Unexpected number of numerical features after scaling"
         )
 
     def test_model_training_and_saving(self):
@@ -102,48 +79,25 @@ class TestHousePriceModel(unittest.TestCase):
 
         # Define categorical and numerical columns
         categorical_columns = [
-            "mainroad",
-            "guestroom",
-            "basement",
-            "hotwaterheating",
-            "airconditioning",
-            "prefarea",
-            "furnishingstatus",
+            "mainroad", "guestroom", "basement", "hotwaterheating",
+            "airconditioning", "prefarea", "furnishingstatus"
         ]
         numerical_columns = ["area", "bedrooms", "bathrooms", "stories", "parking"]
 
         # Sample input for prediction (same structure as the original data)
         sample_input = [
-            5000,
-            4,
-            3,
-            2,
-            "yes",
-            "no",
-            "no",
-            "no",
-            "yes",
-            2,
-            "yes",
-            "furnished",
+            5000, 4, 3, 2, "yes", "no", "no", "no", "yes", 2, "yes", "furnished"
         ]
 
         # Preprocess input (categorical encoding and scaling)
         categorical_values = [
-            sample_input[4],
-            sample_input[5],
-            sample_input[6],
-            sample_input[7],
-            sample_input[8],
-            sample_input[10],
-            sample_input[11],
+            sample_input[4], sample_input[5], sample_input[6],
+            sample_input[7], sample_input[8], sample_input[10],
+            sample_input[11]
         ]
         numerical_values = [
-            sample_input[0],
-            sample_input[1],
-            sample_input[2],
-            sample_input[3],
-            sample_input[9],
+            sample_input[0], sample_input[1], sample_input[2],
+            sample_input[3], sample_input[9]
         ]
 
         # Use DataFrame with column names for encoding and scaling
