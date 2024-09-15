@@ -1,6 +1,7 @@
 # Python files to ignore
 venv/
 .env/
+*.csv
 *.pkl
 __pycache__/
 *.pyc
