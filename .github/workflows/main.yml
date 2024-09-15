@@ -87,10 +87,9 @@ jobs:
 
       - name: Deploy to Vercel (Development)
         run: |
-          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} --env NODE_ENV=development
+          vercel --token "${{ secrets.VERCEL_TOKEN }}" --env NODE_ENV=development
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         if: github.ref == 'refs/heads/dev'
 
   # Job 5: Deploy to Vercel (Staging)
@@ -109,10 +108,9 @@ jobs:
 
       - name: Deploy to Vercel (Staging)
         run: |
-          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} --env NODE_ENV=staging
+          vercel --token "${{ secrets.VERCEL_TOKEN }}" --env NODE_ENV=staging
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         if: github.ref == 'refs/heads/staging'
 
   # Job 6: Deploy to Vercel (Production)
@@ -131,10 +129,9 @@ jobs:
 
       - name: Deploy to Vercel (Production)
         run: |
-          vercel --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} --prod --env NODE_ENV=production
+          vercel --token "${{ secrets.VERCEL_TOKEN }}" --prod --env NODE_ENV=production
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         if: github.ref == 'refs/heads/main'
 
   # Job 7: Deploy to Vercel (Issue-8 Deployment Branch)
@@ -153,8 +150,7 @@ jobs:
 
       - name: Deploy to Vercel (Issue-8 Deployment)
         run: |
-          vercel --token "${{ secrets.VERCEL_TOKEN }}" --scope "${{ secrets.VERCEL_SCOPE }}" --env NODE_ENV=production
+          vercel --token "${{ secrets.VERCEL_TOKEN }}" --env NODE_ENV=production
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         if: github.ref == 'refs/heads/issue-8-deployment'
